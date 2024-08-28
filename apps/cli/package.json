@@ -1,0 +1,21 @@
+{
+  "name": "srcpad",
+  "version": "0.1.0",
+  "private": true,
+  "bin": {
+    "srcpad": "./bin/cli.mjs"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "cli": "bun run ./bin/cli.mjs -- $@"
+  },
+  "dependencies": {
+    "@drizzle-team/brocli": "0.10.1",
+    "@repo/api": "*"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
+    "@types/bun": "latest"
+  }
+}
