@@ -4,12 +4,12 @@ import { Database } from "bun:sqlite";
 import path from "path";
 import fs from "fs";
 import { migrate } from "drizzle-orm/bun-sqlite/migrator";
-import { SRCPADS_DIR, DRIZZLE_DIR } from "./constants.ts";
+import { SRCPAD_DIR, SRCPADS_DIR, DRIZZLE_DIR } from "./constants.ts";
 import { users } from "./db/schema.ts";
 
 fs.mkdirSync(SRCPADS_DIR, { recursive: true });
 
-const sqlite = new Database(path.join(SRCPADS_DIR, "srcpad.db"));
+const sqlite = new Database(path.join(SRCPAD_DIR, "srcpad.db"));
 const db = drizzle(sqlite);
 migrate(db, { migrationsFolder: DRIZZLE_DIR });
 
