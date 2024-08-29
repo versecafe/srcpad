@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "lint": "eslint . --max-warnings 0",
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview"

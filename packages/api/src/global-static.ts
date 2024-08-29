@@ -21,7 +21,9 @@ export const serveGlobalStatic = <E extends Env = Env>(
       try {
         const stats = await stat(path);
         isDir = stats.isDirectory();
-      } catch {}
+      } catch {
+        // do nothing
+      }
       return isDir;
     };
     return baseServeStatic({

@@ -5,6 +5,7 @@
     "./core": "./src/index.ts"
   },
   "scripts": {
+    "lint": "eslint . --max-warnings 0",
     "dev": "bun run --hot src/dev.ts"
   },
   "dependencies": {

@@ -7,7 +7,4 @@ module.exports = {
     project: "./tsconfig.lint.json",
     tsconfigRootDir: __dirname,
   },
-  globals: {
-    Bun: false,
-  },
 };

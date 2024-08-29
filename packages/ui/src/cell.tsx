@@ -17,6 +17,13 @@ export function CodeCell() {
     };
 
     onCleanup(() => {
+      ws.send(
+        JSON.stringify({
+          topic: "session:123",
+          event: "server:connection:close",
+          payload: {},
+        }),
+      );
       ws.close();
     });
   });
@@ -25,7 +32,7 @@ export function CodeCell() {
     if (socket()) {
       const message = {
         topic: "session:123",
-        event: "cell:run",
+        event: "cell:run:request",
         payload: { source: sourceCode() },
       };
       socket().send(JSON.stringify(message));

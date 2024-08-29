@@ -58,19 +58,19 @@ type Message = {
 
 app.get(
   "/ws",
-  upgradeWebSocket(async (c) => {
+  upgradeWebSocket(async () => {
     return {
       onOpen(_, ws) {
         ws.send(
           JSON.stringify({
-            event: "server:connected",
+            event: "server:connection:success",
             payload: { message: "hello from srcpad!" },
           }),
         );
       },
       async onMessage(event, ws) {
         const message: Message = JSON.parse(event.data as string);
-        if (message.event === "cell:run") {
+        if (message.event === "cell:run:request") {
           try {
             const result = await $`echo ${message.payload.source} | bun run -`;
             ws.send(

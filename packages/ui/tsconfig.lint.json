@@ -3,6 +3,12 @@
   "compilerOptions": {
     "outDir": "dist"
   },
-  "include": ["src", "turbo", "drizzle.config.ts"],
+  "include": [
+    "src",
+    "turbo",
+    "tailwind.config.js",
+    "vite.config.ts",
+    "postcss.config.js"
+  ],
   "exclude": ["node_modules", "dist"]
 }
