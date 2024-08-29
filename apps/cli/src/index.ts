@@ -1,6 +1,6 @@
 import { number } from "@drizzle-team/brocli";
 import { run, command, positional } from "@drizzle-team/brocli";
-import { app } from "@repo/api/core";
+import { serve } from "@repo/api/core";
 
 const echo = command({
   name: "echo",
@@ -26,7 +26,7 @@ const start = command({
   },
   handler: (opts) => {
     console.log(`starting server on port ${opts.port}`);
-    Bun.serve({ fetch: app.fetch, port: opts.port });
+    serve(opts.port);
   },
 });
 

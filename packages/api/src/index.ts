@@ -6,12 +6,15 @@ import fs from "fs";
 import { migrate } from "drizzle-orm/bun-sqlite/migrator";
 import { SRCPAD_DIR, SRCPADS_DIR, DRIZZLE_DIR } from "./constants.ts";
 import { users } from "./db/schema.ts";
+import { createBunWebSocket } from "hono/bun";
 
 fs.mkdirSync(SRCPADS_DIR, { recursive: true });
 
 const sqlite = new Database(path.join(SRCPAD_DIR, "srcpad.db"));
 const db = drizzle(sqlite);
 migrate(db, { migrationsFolder: DRIZZLE_DIR });
+
+const { upgradeWebSocket, websocket } = createBunWebSocket();
 
 export const app = new Hono();
 
@@ -34,3 +37,26 @@ app.get("/users", async (c) => {
   const result = await db.select().from(users);
   return c.json(result);
 });
+
+app.get(
+  "/ws",
+  upgradeWebSocket((c) => {
+    return {
+      onOpen(_, ws) {
+        ws.send("hello from srcpad!");
+      },
+      onMessage(event, ws) {
+        if (event.data === "ping") {
+          ws.send("pong");
+        }
+      },
+      onClose: () => {
+        console.log("ws connection closed");
+      },
+    };
+  }),
+);
+
+export function serve(port: number) {
+  Bun.serve({ fetch: app.fetch, port: port, websocket: websocket });
+}

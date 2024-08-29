@@ -1,6 +1,3 @@
-import { app } from "./index.ts";
+import { serve } from "./index.ts";
 
-Bun.serve({
-  port: 2150,
-  fetch: app.fetch,
-});
+serve(2150);
