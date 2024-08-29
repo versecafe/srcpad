@@ -1,6 +1,6 @@
-import { app } from ".";
+import { app } from "./index.ts";
 
 Bun.serve({
-  port: 3000,
+  port: 2150,
   fetch: app.fetch,
 });
