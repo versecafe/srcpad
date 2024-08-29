@@ -4,9 +4,11 @@ import { Database } from "bun:sqlite";
 import path from "path";
 import fs from "fs";
 import { migrate } from "drizzle-orm/bun-sqlite/migrator";
-import { SRCPAD_DIR, SRCPADS_DIR, DRIZZLE_DIR } from "./constants.ts";
+import { SRCPAD_DIR, SRCPADS_DIR, DRIZZLE_DIR, UI_DIR } from "./constants.ts";
 import { users } from "./db/schema.ts";
 import { createBunWebSocket } from "hono/bun";
+import { $ } from "bun";
+import { serveGlobalStatic } from "./global-static.ts";
 
 fs.mkdirSync(SRCPADS_DIR, { recursive: true });
 
@@ -18,9 +20,19 @@ const { upgradeWebSocket, websocket } = createBunWebSocket();
 
 export const app = new Hono();
 
-app.get("/", async (c) => {
-  return c.text("Hello Hono!");
-});
+app.get(
+  "/",
+  serveGlobalStatic({
+    path: path.join(UI_DIR, "index.html"),
+  }),
+);
+
+app.get(
+  "/assets/*",
+  serveGlobalStatic({
+    root: path.join(UI_DIR),
+  }),
+);
 
 app.post("/users", async (c) => {
   try {
@@ -38,16 +50,46 @@ app.get("/users", async (c) => {
   return c.json(result);
 });
 
+type Message = {
+  topic: string;
+  event: string;
+  payload: any;
+};
+
 app.get(
   "/ws",
-  upgradeWebSocket((c) => {
+  upgradeWebSocket(async (c) => {
     return {
       onOpen(_, ws) {
-        ws.send("hello from srcpad!");
+        ws.send(
+          JSON.stringify({
+            event: "server:connected",
+            payload: { message: "hello from srcpad!" },
+          }),
+        );
       },
-      onMessage(event, ws) {
-        if (event.data === "ping") {
-          ws.send("pong");
+      async onMessage(event, ws) {
+        const message: Message = JSON.parse(event.data as string);
+        if (message.event === "cell:run") {
+          try {
+            const result = await $`echo ${message.payload.source} | bun run -`;
+            ws.send(
+              JSON.stringify({
+                event: "cell:run:result",
+                payload: {
+                  stdout: result.stdout.toString(),
+                  stderr: result.stderr.toString(),
+                },
+              }),
+            );
+          } catch (error) {
+            ws.send(
+              JSON.stringify({
+                event: "cell:run:error",
+                payload: error,
+              }),
+            );
+          }
         }
       },
       onClose: () => {
