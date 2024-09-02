@@ -1,8 +1,8 @@
 {
-  "extends": "@repo/typescript-config/base.json",
+  "extends": "@repo/configs/ts/base.json",
   "compilerOptions": {
     "outDir": "dist"
   },
-  "include": ["src", "turbo", "drizzle.config.ts"],
+  "include": ["src", "turbo", "drizzle.config.ts", ".eslintrc.cjs"],
   "exclude": ["node_modules", "dist"]
 }

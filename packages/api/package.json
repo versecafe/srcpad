@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "drizzle-orm": "^0.33.0",
-    "hono": "^4.5.9"
+    "hono": "^4.5.10"
   },
   "devDependencies": {
     "@repo/configs": "*",

@@ -1,5 +1,5 @@
 {
-  "extends": "@repo/typescript-config/base.json",
+  "extends": "@repo/configs/ts/base.json",
   "compilerOptions": {
     "outDir": "dist"
   },
@@ -8,7 +8,8 @@
     "turbo",
     "tailwind.config.js",
     "vite.config.ts",
-    "postcss.config.js"
+    "postcss.config.js",
+    ".eslintrc.cjs"
   ],
   "exclude": ["node_modules", "dist"]
 }
