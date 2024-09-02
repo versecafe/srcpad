@@ -13,7 +13,7 @@ import { serveGlobalStatic } from "./global-static.ts";
 fs.mkdirSync(SRCPADS_DIR, { recursive: true });
 
 const sqlite = new Database(path.join(SRCPAD_DIR, "srcpad.db"));
-const db = drizzle(sqlite);
+export const db = drizzle(sqlite);
 migrate(db, { migrationsFolder: DRIZZLE_DIR });
 
 const { upgradeWebSocket, websocket } = createBunWebSocket();

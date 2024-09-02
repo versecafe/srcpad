@@ -6,7 +6,8 @@
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
-    "dev": "bun run --hot src/dev.ts"
+    "dev": "bun run --hot src/dev.ts",
+    "test": "bun test"
   },
   "dependencies": {
     "drizzle-orm": "^0.33.0",

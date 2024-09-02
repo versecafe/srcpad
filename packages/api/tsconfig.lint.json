@@ -3,6 +3,6 @@
   "compilerOptions": {
     "outDir": "dist"
   },
-  "include": ["src", "turbo", "drizzle.config.ts", ".eslintrc.cjs"],
+  "include": ["src", "tests", "turbo", "drizzle.config.ts", ".eslintrc.cjs"],
   "exclude": ["node_modules", "dist"]
 }
