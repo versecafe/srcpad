@@ -13,8 +13,7 @@
     "hono": "^4.5.9"
   },
   "devDependencies": {
-    "@repo/eslint-config": "*",
-    "@repo/typescript-config": "*",
+    "@repo/configs": "*",
     "@types/bun": "latest",
     "drizzle-kit": "^0.24.2"
   }

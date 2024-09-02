@@ -15,8 +15,7 @@
     "@repo/api": "*"
   },
   "devDependencies": {
-    "@repo/eslint-config": "*",
-    "@repo/typescript-config": "*",
+    "@repo/configs": "*",
     "@types/bun": "latest"
   }
 }

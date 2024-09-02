@@ -1,11 +1,10 @@
 {
-  "name": "@repo/eslint-config",
+  "name": "@repo/configs",
   "version": "0.0.0",
   "private": true,
   "files": [
-    "library.js",
-    "next.js",
-    "react-internal.js"
+    "eslint/library.js",
+    "eslint/react-internal.js"
   ],
   "devDependencies": {
     "@vercel/style-guide": "^5.2.0",
