@@ -35,7 +35,7 @@ export function CodeCell() {
         event: "cell:run:request",
         payload: { source: sourceCode() },
       };
-      socket().send(JSON.stringify(message));
+      socket()?.send(JSON.stringify(message));
     }
   };
 

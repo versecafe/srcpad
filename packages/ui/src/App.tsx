@@ -1,5 +1,5 @@
 import type { Component } from "solid-js";
-import { CodeCell } from "@/cell";
+import { CodeCell } from "@/cell.tsx";
 
 export const App: Component = () => {
   return (
