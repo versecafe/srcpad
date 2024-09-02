@@ -2,7 +2,7 @@
   "name": "@repo/api",
   "type": "module",
   "exports": {
-    "./core": "./src/index.ts"
+    "./core": "./src/core.ts"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",

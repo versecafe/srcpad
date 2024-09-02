@@ -1,14 +1,14 @@
 import { Hono } from "hono";
+import { createBunWebSocket } from "hono/bun";
 import { drizzle } from "drizzle-orm/bun-sqlite";
 import { Database } from "bun:sqlite";
+import { migrate } from "drizzle-orm/bun-sqlite/migrator";
+import { $ } from "bun";
 import path from "path";
 import fs from "fs";
-import { migrate } from "drizzle-orm/bun-sqlite/migrator";
-import { SRCPAD_DIR, SRCPADS_DIR, DRIZZLE_DIR, UI_DIR } from "./constants.ts";
-import { users } from "./db/schema.ts";
-import { createBunWebSocket } from "hono/bun";
-import { $ } from "bun";
-import { serveGlobalStatic } from "./global-static.ts";
+import { SRCPAD_DIR, SRCPADS_DIR, DRIZZLE_DIR, UI_DIR } from "@/constants.ts";
+import { users } from "@/db/schema.ts";
+import { serveGlobalStatic } from "@/global-static.ts";
 
 fs.mkdirSync(SRCPADS_DIR, { recursive: true });
 

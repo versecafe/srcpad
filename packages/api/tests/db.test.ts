@@ -1,6 +1,6 @@
 import { expect, test, describe } from "bun:test";
-import { db } from "../src/index.ts";
-import { users } from "../src/db/schema.ts";
+import { db } from "@/core.ts";
+import { users } from "@/db/schema.ts";
 import { eq } from "drizzle-orm";
 
 // ensure the db is correctly created, migrated, and sql driver works

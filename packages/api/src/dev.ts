@@ -1,3 +1,3 @@
-import { serve } from "./index.ts";
+import { serve } from "@/core.ts";
 
 serve(2150);
