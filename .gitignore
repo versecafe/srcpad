@@ -15,6 +15,7 @@ node_modules
 
 # Build Outputs
 build
+dist
 
 # Misc
 .DS_Store

@@ -1,18 +1,14 @@
 {
+  "extends": "@repo/configs/ts/solid-library.json",
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "jsx": "preserve",
-    "jsxImportSource": "solid-js",
+    "outDir": "dist",
+    "strict": true,
     "types": ["vite/client"],
-    "noEmit": true,
-    "isolatedModules": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
     }
-  }
+  },
+  "include": ["src", "tests"],
+  "exclude": ["node_modules", "dist"]
 }
