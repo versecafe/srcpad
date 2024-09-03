@@ -1,5 +1,5 @@
 {
-  "name": "@repo/ui",
+  "name": "@repo/frontend",
   "version": "0.1.0",
   "type": "module",
   "scripts": {
