@@ -3,6 +3,10 @@
 # Dependencies
 node_modules
 
+# Zig
+**/.zig-cache
+**/zig-out
+
 # Local env files
 .env
 .env.local

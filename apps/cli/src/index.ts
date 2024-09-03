@@ -1,6 +1,8 @@
 import { number } from "@drizzle-team/brocli";
 import { run, command, positional } from "@drizzle-team/brocli";
 import { serve } from "@repo/api/core";
+import { $ } from "bun";
+import fs from "fs";
 
 const echo = command({
   name: "echo",
@@ -30,6 +32,25 @@ const start = command({
   },
 });
 
+const wasm = command({
+  name: "wasm",
+  desc: "runs all wasm extensions in parallel",
+  handler: async () => {
+    const extensionsDir = "../../extensions";
+    const extensions = fs.readdirSync(extensionsDir);
+    let extensionFiles: string[] = [];
+    for (const extension of extensions) {
+      const wasmFile = `${extensionsDir}/${extension}/zig-out/bin/${extension}.wasm`;
+      if (fs.existsSync(wasmFile)) {
+        extensionFiles.push(wasmFile);
+      } else {
+        console.log(`Skipping ${extension}`);
+      }
+    }
+    Promise.all([...extensionFiles.map((file) => $`bun ${file}`)]);
+  },
+});
+
 export function cli() {
-  run([echo, start], { version: "0.1.0" });
+  run([echo, start, wasm], { version: "0.1.0" });
 }
