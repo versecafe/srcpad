@@ -19,6 +19,5 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ],
-  "version": "0.2.0"
+  ]
 }
