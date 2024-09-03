@@ -15,10 +15,7 @@
     "typescript": "^5.4.5",
     "eslint": "^8.57.0"
   },
-  "engines": {
-    "node": ">=18"
-  },
-  "packageManager": "bun@1.1.23",
+  "packageManager": "bun@1.1.26",
   "workspaces": [
     "apps/*",
     "packages/*"
