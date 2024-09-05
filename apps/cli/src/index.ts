@@ -1,6 +1,6 @@
 import { number } from "@drizzle-team/brocli";
 import { run, command, positional } from "@drizzle-team/brocli";
-import { serve } from "@repo/api/core";
+import { serve } from "@srcpad/api/core";
 import { $ } from "bun";
 import fs from "fs";
 

@@ -1,5 +1,5 @@
 {
-  "name": "@repo/frontend",
+  "name": "@srcpad/frontend",
   "version": "0.1.0",
   "type": "module",
   "scripts": {

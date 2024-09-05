@@ -12,10 +12,9 @@
   },
   "dependencies": {
     "@drizzle-team/brocli": "0.10.1",
-    "@repo/api": "*"
+    "@srcpad/api": "workspace:*"
   },
   "devDependencies": {
-    "@repo/configs": "*",
     "@types/bun": "latest"
   }
 }

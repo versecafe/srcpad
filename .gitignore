@@ -21,6 +21,9 @@ node_modules
 build
 dist
 
+# Releases
+.npmrc
+
 # Misc
 .DS_Store
 *.pem

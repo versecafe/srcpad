@@ -1,5 +1,5 @@
 {
-  "extends": "@repo/configs/ts/solid-library.json",
+  "extends": "@srcpad/configs/ts/solid-library.json",
   "compilerOptions": {
     "outDir": "dist",
     "strict": true,

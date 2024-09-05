@@ -10,10 +10,12 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "@changesets/cli": "^2.27.8",
+    "@srcpad/configs": "workspace:*",
+    "eslint": "^8.57.0",
     "prettier": "^3.2.5",
     "turbo": "^2.1.1",
-    "typescript": "^5.4.5",
-    "eslint": "^8.57.0"
+    "typescript": "^5.4.5"
   },
   "packageManager": "bun@1.1.26",
   "workspaces": [
