@@ -21,9 +21,9 @@ jobs:
       - name: Creating .npmrc file
         run: |
           cp .npmrc.template .npmrc
-          sed -i "s/INSERT_ACCESS_TOKEN_HERE/$NPM_TOKEN/g" .npmrc
+          sed -i "s/INSERT_ACCESS_TOKEN_HERE/$GITHUB_TOKEN/g" .npmrc
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
