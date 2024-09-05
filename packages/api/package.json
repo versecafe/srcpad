@@ -1,6 +1,8 @@
 {
   "name": "@srcpad/api",
+  "version": "0.1.0",
   "type": "module",
+  "private": false,
   "exports": {
     "./core": "./src/core.ts"
   },

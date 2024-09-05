@@ -2,6 +2,7 @@
   "name": "@srcpad/frontend",
   "version": "0.1.0",
   "type": "module",
+  "private": false,
   "scripts": {
     "lint": "eslint . --max-warnings 0",
     "dev": "vite",
